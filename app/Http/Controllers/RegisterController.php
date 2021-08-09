@@ -13,6 +13,14 @@ class RegisterController extends Controller{
     }
 
     public function store(){
+
+        $this->validate(request(), [
+            'name' => 'required',
+            'username' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed',
+        ]);
+        
         // COMPROBAR QUE LAS PASS1 Y 2 SEAN IGUALES, ANTES DE INSERTAR 
         //Log::info("pass1:".request('password')." | pass2:".request('password2') );
 

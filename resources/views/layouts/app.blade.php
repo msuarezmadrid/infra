@@ -15,9 +15,19 @@
 				<p class="text-2xl font-bold">Portal Infraestructura</p>
 			</div>
 			<ul class="w-1/2 px-16 ml-auto flex justify-end pt-1">
+			@if( auth()->check() )
+				<li class="mx-8">
+					<p> Bienvenido <strong>{{ auth()->user()->name }}</strong> </p>
+				</li>
+				<li>
+					<a href="{{ route('login.destroy') }}" class="font-bold py-3 px-4 rounded-md bg-red-500 hover:bg-red-600 " > Salir </a>
+				</li>
+			@else
 				<li>
 					<a href="{{ route('login.index') }}" class="font-semibold border-2 border-while py-2 px-4 rounded-md hover:bg-white hover:text-blue-800" >Ingresar</a>
 				</li>
+				
+			@endif
 			</ul>
 		</nav>
 
